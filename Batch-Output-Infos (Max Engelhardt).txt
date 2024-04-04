@@ -1,0 +1,16 @@
+Was ist eine Batch-Datei:
+- Scriptdatei
+- Mit Batch können Programme geschrieben werden
+- Enthalten eine Abfolge von Befehlen,
+  die automatisch ausgeführt werden.
+- Nutzen Betriebeseingene Befehle 
+- Automatisierung von Wiederkehrenden Aufgaben
+- Enthalten befehle der Kommandozeile und können
+  auf der Kommandozeile ausgeführt werden
+
+  Beispiele:
+  - Dateinen von einem in den anderen Ordner kopieren
+  - mehrere Programme nacheinander ausführen
+  - Systemkonfigerationen Anpassen
+
+
