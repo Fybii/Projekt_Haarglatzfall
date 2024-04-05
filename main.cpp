@@ -5,9 +5,8 @@
 //including of the help file that will be displayed
 #include "header/command.h"
 #include "header/jsonFinder.h"
-
 //function to put the help text in the console
-
+//test
 
 //longopts structure which is used to use long operators as commands
 struct option longopts[] = {
