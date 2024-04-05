@@ -45,7 +45,6 @@ class Help : public Command {
     //Function to display the text
     void showHelpText() {
         puts(HELPTEXT);
-        exit(0);
     }
 };
 
