@@ -54,8 +54,9 @@ int main(int argc, char *argv[])
             file.readJSON(argv[i]);
             //counts up to read next JSON data
             i++;
+            std::cout << "brr" << "\n";
             //Checks if the next user input isn't NULL
-            if(argv[i] == NULL) break;
+            if(file.endsWithJson(argv[i], ".json")) exit(0);
         } 
         
     }
