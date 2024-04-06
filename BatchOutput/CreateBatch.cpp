@@ -1,11 +1,43 @@
-// C++ implementation to create a file
- 
 #include <jsoncpp/json/json.h>
-#include <fstream>  
-#include <bits/stdc++.h> 
+#include <fstream>
+#include <iostream>
 
+// Declare outputFileValue as a global variable
+Json::Value outputFileValue;
 
-// Driver code 
+// Function to create and write to the batch file
+void createBatchFile() 
+{
+    // Open the batch file with the name from outputFileValue
+    std::ofstream batchFile(outputFileValue.asString() + ".bat");
+
+    // Check if the file is opened successfully
+    if (!batchFile.is_open())
+    {
+        std::cerr << "Error in creating batch file!" << std::endl;
+        return;
+    }
+
+    // Write commands to the batch file
+    batchFile << "@echo off" << std::endl;
+    batchFile << "cmd.exe" << std::endl;
+
+    // Close the batch file
+    batchFile.close();
+
+    std::cout << "Batch file created successfully." << std::endl;
+
+    // Check the operating system and execute the batch file
+    #ifdef _WIN32
+        std::string command = "start " + outputFileValue.asString() + ".bat";
+        system(command.c_str());
+    #elif __linux__ || __APPLE__
+        std::string command = "chmod +x \"" + outputFileValue.asString() + ".bat\" && ./\"";
+        command += outputFileValue.asString() + ".bat\"";
+        system(command.c_str());
+    #endif
+}
+
 int main() 
 { 
     // Open the JSON file
@@ -35,69 +67,34 @@ int main()
         if (firstElement.isObject())
         {
             // Access the value with the key "outputfile"
-            Json::Value outputFileValue = firstElement["outputfile"];
+            outputFileValue = firstElement["outputfile"];
 
             // Check if the key "outputfile" exists in the JSON
             if (!outputFileValue.isNull())
             {
                 // Print the value of "outputfile"
                 std::cout << "Value of outputfile: " << outputFileValue.asString() << std::endl;
+
+                // Create and write to the batch file
+                createBatchFile();
             }
             else
             {
                 std::cerr << "Key 'outputfile' not found in JSON." << std::endl;
+                return 1;  // Return if key not found
             }
         }
         else
         {
             std::cerr << "The first element is not an object." << std::endl;
+            return 1;  // Return if not an object
         }
     }
     else
     {
         std::cerr << "Root is not an array or is empty." << std::endl;
+        return 1;  // Return if root is not an array or is empty
     }
 
-
-    // fstream is Stream class to both 
-    // read and write from/to files. 
-    // file is object of fstream class 
-   std::fstream file; 
-  
-   // opening file "Gfg.txt" 
-   // in out(write) mode 
-   // ios::out Open for output operations. 
-   file.open("mybatchfile.bat",std::ios::out); 
-  
-   // If no file is created, then 
-   // show the error message. 
-   if(!file) 
-   { 
-       std::cout<<"Error in creating file!!!"; 
-       return 0; 
-   } 
-  
-   std::cout<<"File created successfully. "; 
-
-    // Create a batch file named "mybatchfile.bat"
-    system("echo @echo OFF > mybatchfile.bat");
-    system("echo :START >> mybatchfile.bat");
-    system("echo dir C:\\ >> mybatchfile.bat");
-    system("echo CreateBatch.exe>nul >> mybatchfile.bat");
-    system("echo goto :eof >> mybatchfile.bat");
-
-    // Execute the batch file
-//    system("mybatchfile.bat");
-
-    std::cout << "Starting Batch File... " << std::endl;
     return 0;
-  
-   // closing the file. 
-   // The reason you need to call close() 
-   // at the end of the loop is that trying 
-   // to open a new file without closing the 
-   // first file will fail. 
-   file.close(); 
-  
-   return 0; 
 }
