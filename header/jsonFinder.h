@@ -4,9 +4,9 @@
 class Reader {
     public:
         //Function to read a json file
-        void readJSON(char const *argv) {
+        void readJSON(std::string fileName) {
             //open file the file from the user input
-            std::ifstream in(argv);
+            std::ifstream in(fileName);
             //if the file got opened do:
             if(in.is_open()) {
                 std::string line;
@@ -18,7 +18,7 @@ class Reader {
                 in.close();
             }
             else {
-                std::cout << "File " << argv << " don't exist or the path is wrong" << "\n";
+                std::cout << "File " << fileName << " don't exist or the path is wrong" << "\n";
             }
         }
 
