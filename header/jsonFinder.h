@@ -24,6 +24,9 @@ class Reader {
 
         //Function to determin if the user inputs ends in json 
         bool endsWithJson(std::string fileName, std::string targetEnding) {
+            if (fileName == "") {
+                exit(0);
+            }
             std::cout << "Filename: " << fileName << "\n";
             //Compare if the user input file has less letters then the target: ".json"
             if(targetEnding.size() > fileName.size()) {

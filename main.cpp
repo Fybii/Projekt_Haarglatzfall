@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
         };
         //Loop to go through every JSON data the user wants to read
         //checks if the end of the file Name ends with ".json"
-        while (file.endsWithJson(argv[i], ".json")) {
+        while (file.endsWithJson(argv[i], ".json") && argv[i] != NULL) {
             std::cout << argv[i] << " ends with json" << "\n";
             //executes the readJSON function in jsonFinder.h
             file.readJSON(argv[i]);
@@ -56,7 +56,6 @@ int main(int argc, char *argv[])
             i++;
             std::cout << "brr" << "\n";
             //Checks if the next user input isn't NULL
-            if(file.endsWithJson(argv[i], ".json")) exit(0);
         } 
         
     }
