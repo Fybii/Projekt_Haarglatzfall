@@ -4,6 +4,8 @@
 
 // Declare outputFileValue as a global variable
 Json::Value outputFileValue;
+//Momontarily set as false (can change)
+bool hideShell = false;
 
 // Function to create and write to the batch file
 void createBatchFile() 
@@ -21,6 +23,12 @@ void createBatchFile()
     // Write commands to the batch file
     batchFile << "@echo off" << std::endl;
     batchFile << "cmd.exe" << std::endl;
+
+    // Check if hideShell is true
+    if (hideShell)
+    {
+        batchFile << "exit" << std::endl;  // Add the exit command to close the Command Prompt window
+    }
 
     // Close the batch file
     batchFile.close();
@@ -41,7 +49,7 @@ void createBatchFile()
 int main() 
 { 
     // Open the JSON file
-    std::ifstream batchFile("../Test.json", std::ifstream::binary);
+    std::ifstream batchFile("../Test2.json", std::ifstream::binary);
 
     // Parse the JSON file into a Json::Value object
     Json::Value root;
@@ -68,6 +76,10 @@ int main()
         {
             // Access the value with the key "outputfile"
             outputFileValue = firstElement["outputfile"];
+
+            // Access the value with the key "hideshell"
+            hideShell = firstElement.get("hideshell", false).asBool();
+
 
             // Check if the key "outputfile" exists in the JSON
             if (!outputFileValue.isNull())

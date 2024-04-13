@@ -1,6 +1,6 @@
 [
     {
-        "outputfile": "Name",
-        "Hello": "Hey"
+        "outputfile": "Test 1",
+        "hideshell": true
     }
 ] 
