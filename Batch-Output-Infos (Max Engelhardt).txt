@@ -13,4 +13,20 @@ Was ist eine Batch-Datei:
   - mehrere Programme nacheinander ausführen
   - Systemkonfigerationen Anpassen
 
+Das Zeilenende in der erstellten Batch Datei soll Windows Konform mit “carriage
+return new line” erfolgen.
+
+"Carriage return new line" bezieht sich auf das Zeilenende-Format, das in
+Windows-Systemen verwendet wird. In Windows wird ein Zeilenumbruch durch 
+zwei Zeichen dargestellt: ein Carriage Return (\r, ASCII-Code 13) gefolgt 
+von einem Line Feed (\n, ASCII-Code 10).
+
+Lösung:
+std::ios::binary: Öffnet die Datei im Binärmodus, um sicherzustellen, dass 
+die Zeilenumbrüche korrekt geschrieben werden.
+Verwendung von \r\n anstelle von std::endl für das Zeilenende in der Batch-Datei,
+um Windows-konforme Zeilenumbrüche zu erzeugen.
+Mit diesen Änderungen sollte die erstellte Batch-Datei Windows-konforme 
+Zeilenumbrüche verwenden.
+
 

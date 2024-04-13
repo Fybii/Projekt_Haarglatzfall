@@ -1,3 +1,3 @@
 @echo off
-cmd.exe
-exit
+cmd.exe /k
+@echo on

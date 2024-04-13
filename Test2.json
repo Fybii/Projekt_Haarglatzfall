@@ -1,6 +1,6 @@
 [
     {
         "outputfile": "Test 1",
-        "hideshell": true
+        "hideshell": false
     }
 ] 

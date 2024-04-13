@@ -11,7 +11,7 @@ bool hideShell = false;
 void createBatchFile() 
 {
     // Open the batch file with the name from outputFileValue
-    std::ofstream batchFile(outputFileValue.asString() + ".bat");
+    std::ofstream batchFile(outputFileValue.asString() + ".bat", std::ios::binary);  // Öffnen im Binärmodus
 
     // Check if the file is opened successfully
     if (!batchFile.is_open())
@@ -22,12 +22,16 @@ void createBatchFile()
 
     // Write commands to the batch file
     batchFile << "@echo off" << std::endl;
-    batchFile << "cmd.exe" << std::endl;
 
     // Check if hideShell is true
     if (hideShell)
     {
-        batchFile << "exit" << std::endl;  // Add the exit command to close the Command Prompt window
+        batchFile << "cmd.exe /c exit\r\n";  // Add the exit command to close the Command Prompt window
+    }
+    else
+    {
+        batchFile << "cmd.exe /k\r\n";        // Keep the Command Prompt window open
+        batchFile << "@echo on\r\n";          // Re-enable command echoing
     }
 
     // Close the batch file
