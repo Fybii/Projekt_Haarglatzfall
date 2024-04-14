@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <jsoncpp/json/json.h>
 
 class Reader {
 public:

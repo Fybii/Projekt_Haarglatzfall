@@ -1,6 +1,9 @@
 [
     {
+        "application" : "stinkt",
         "outputfile": "Test 1",
-        "hideshell": false
+        "hideshell": false,
+        "test": "hallo",
+        "arschfick" : "geil"
     }
 ] 
