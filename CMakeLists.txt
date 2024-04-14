@@ -4,19 +4,11 @@ project(ProgrammierProjekt LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+#Alle Cpp dateien die wir brauchen:
+set(SOURCES src/main.cpp)
+
 # Fügen Sie hier alle Quelldateien hinzu
-add_executable(MeineAnwendung main.cpp)
+add_executable(ProgrammierProjekt ${SOURCES})
 
-#Bin nicht sicher ob wir das brauchen
-# include(FetchContent)
-# FetchContent_Declare(
-#     fmt
-#     GIT_REPOSITORY https://github.com/Fybii/Projekt_Haarglatzfall.git
-#     GIT_TAG #Hab keins gefunden schau noch warum wir es genauer brauchen
-# )
-
-# FetchContent_MakeAvailable(fmt)
-
-add_executable(main.cpp)
-
+target_include_directories(ProgrammierProjekt PRIVATE ${PROJECT_SOURCE_DIR}/header)
 # Konfigurieren Sie hier zusätzliche Einstellungen, z. B. Compiler-Flags oder Bibliotheken
