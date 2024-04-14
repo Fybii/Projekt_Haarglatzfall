@@ -1,2 +1,0 @@
-/home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall/build/CMakeFiles/edit_cache.dir
-/home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall/build/CMakeFiles/rebuild_cache.dir
