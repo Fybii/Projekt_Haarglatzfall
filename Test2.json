@@ -3,7 +3,10 @@
         "application" : "stinkt",
         "outputfile": "Test 1",
         "hideshell": false,
-        "test": "hallo",
-        "arschfick" : "geil"
+        "entries" : [
+            {"type": "EXE", "command": ""},
+            {"type": "ENV", "key": "BOOST_INCLUDEDIR", "value": "C:\\sicherung\\tools\\MinGW\\include"},
+            {"type": "PATH", "path": "C:\\sicherung\\tools\\VSCode"}
+        ]
     }
 ] 

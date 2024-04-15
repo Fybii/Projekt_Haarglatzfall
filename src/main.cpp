@@ -3,8 +3,8 @@
 #include <fstream>
 #include <string>
 //including of the help file that will be displayed
-#include "command.h"
-#include "jsonFinder.h"
+#include "../header/command.h"
+#include "../header/jsonFinder.h"
 //function to put the help text in the console
 //test
 
@@ -61,11 +61,6 @@ int main(int argc, char *argv[])
             //counts up to read next JSON data
             i++;
             //Checks if the next user input isn't NULL
-
-            //Test um zu prüfen ob Variablen beschrieben sind
-            std::cout << "Outputfile: " << file.outputfile << std::endl;
-            std::cout << "Hideshell: " << std::boolalpha << file.hideshell << std::endl;
-
         } 
         
     }

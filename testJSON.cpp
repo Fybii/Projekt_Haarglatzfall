@@ -4,7 +4,7 @@
 
 int main(int argc, char const *argv[])
 {
-    Json::Value root;
+    Json::Value root; 
     Json::Reader reader;
 
     std::ifstream file("Test2.json");    

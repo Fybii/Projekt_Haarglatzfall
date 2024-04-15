@@ -7,48 +7,42 @@ public:
     std::string outputfile; // Variable zum Speichern des Wertes von "outputfile"
     bool hideshell; // Variable zum Speichern des Wertes von "hideshell"
     std::string application; // Variable zum Speichern des Pfads und Namens der auszuführenden Anwendung
+    Json::Value root;
+    Json::Reader reader;
 
     // Funktion zum Lesen einer JSON-Datei
     void readJSON(char const *argv) {
+        std::string fileName = argv;
+        std::cout << fileName << std::endl;
         // Öffnen der Datei aus der Benutzereingabe
-        std::ifstream in(argv);
+        std::ifstream file(argv);
+        file >> root;
+        std::cout << root << std::endl;
         // Überprüfen, ob die Datei geöffnet wurde
-        if (in.is_open()) {
-            std::string line;
-            // Schleife zum Lesen jeder Zeile in der JSON-Datei
-            while (std::getline(in, line)) {
-                // Suchen nach dem Schlüssel "outputfile"
-                size_t pos = line.find("\"outputfile\":");
-                if (pos != std::string::npos) {
-                    // Wenn der Schlüssel gefunden wurde, extrahieren Sie den Wert von "outputfile"
-                    size_t start = line.find_first_of('"', pos + 1);
-                    size_t end = line.find_first_of('"', start + 1);
-                    outputfile = line.substr(start + 1, end - start - 1);
-                }
+        if (file.is_open()) {
+            const Json::Value outputfileValue = root[0]["outputfile"];
+            const Json::Value hideshellValue = root[0]["hideshell"];
+            const Json::Value applicationValue = root[0]["application"];
+            const Json::Value entries = root["entries"];
 
-                // Suchen nach dem Schlüssel "hideshell"
-                pos = line.find("\"hideshell\":");
-                if (pos != std::string::npos) {
-                    // Wenn der Schlüssel gefunden wurde, extrahieren Sie den Wert von "hideshell"
-                    size_t start = line.find_first_of(':', pos + 1);
-                    size_t end = line.find_first_of(',', start + 1);
-                    std::string value = line.substr(start + 1, end - start - 1);
+            // Überprüfe, ob der Wert korrekt ausgelesen wurde
+            if (!outputfileValue.isNull())
+            {
+                std::cout << "Der Wert von outputfile ist: " << outputfileValue.asString() << std::endl;
+                std::cout << "Der Wert von hideshell ist: " << hideshellValue.asString() << std::endl;
+                std::cout << "Der Wert von application ist: " << applicationValue.asString() << std::endl;
 
-                    // Interpretieren Sie den Wert von "hideshell" als booleschen Wert
-                    hideshell = (value == "true") ? true : false;
-                }
-
-                // Suchen nach dem Schlüssel "application"
-                pos = line.find("\"application\":");
-                if (pos != std::string::npos) {
-                    // Wenn der Schlüssel gefunden wurde, extrahieren Sie den Wert von "application"
-                    size_t start = line.find_first_of('"', pos + 1);
-                    size_t end = line.find_first_of('"', start + 1);
-                    application = line.substr(start + 1, end - start - 1);
+                for ( int index = 0; index < entries.size(); ++index ){
+                    std::cout << "Der Wert an Stelle " << index << " ist: " << entries[index] << std::endl;
                 }
             }
+            else
+            {
+                std::cout << "Fehler beim Lesen von outputfile" << std::endl;
+            }
             // Schließen der Datei nach Abschluss
-            in.close();
+
+            file.close();
         } else {
             std::cout << "File " << argv << " does not exist or the path is wrong" << "\n";
         }
