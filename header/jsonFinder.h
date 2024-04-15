@@ -2,6 +2,14 @@
 #include <iostream>
 #include <jsoncpp/json/json.h>
 
+struct Entry {
+    std::string type;
+    std::string key;
+    std::string value;
+    std::string command;
+    std::string path;
+};
+
 class Reader {
 public:
     std::string outputfile; // Variable zum Speichern des Wertes von "outputfile"
@@ -23,7 +31,7 @@ public:
             const Json::Value outputfileValue = root[0]["outputfile"];
             const Json::Value hideshellValue = root[0]["hideshell"];
             const Json::Value applicationValue = root[0]["application"];
-            const Json::Value entries = root["entries"];
+            const Json::Value entries = root[0]["entries"];
 
             // Überprüfe, ob der Wert korrekt ausgelesen wurde
             if (!outputfileValue.isNull())
@@ -32,9 +40,24 @@ public:
                 std::cout << "Der Wert von hideshell ist: " << hideshellValue.asString() << std::endl;
                 std::cout << "Der Wert von application ist: " << applicationValue.asString() << std::endl;
 
-                for ( int index = 0; index < entries.size(); ++index ){
-                    std::cout << "Der Wert an Stelle " << index << " ist: " << entries[index] << std::endl;
-                }
+                for (const auto& entry : entries) {
+                    Entry newEntry;
+                    newEntry.type = entry["type"].asString();
+                    if (newEntry.type == "ENV") {
+                        newEntry.key = entry["key"].asString();
+                        newEntry.value = entry["value"].asString();
+                    } 
+                    else if (newEntry.type == "EXE") {
+                        newEntry.command = entry["command"].asString();
+                    } 
+                    else if (newEntry.type == "PATH") {
+                        newEntry.path = entry["path"].asString();
+                    }
+                    entries.append(newEntry);
+            }
+                /*for ( int index = 0; index < entries.size(); ++index ){
+                    std::cout << "Der Wert an Stelle " << index + 1 << " ist: " << entries[index] << std::endl;
+                    }*/
             }
             else
             {
