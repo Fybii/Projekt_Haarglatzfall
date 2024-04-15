@@ -8,7 +8,9 @@ struct Entry {
     std::string value;
     std::string command;
     std::string path;
+    std::string entryArray[100];
 };
+
 
 class Reader {
 public:
@@ -17,6 +19,7 @@ public:
     std::string application; // Variable zum Speichern des Pfads und Namens der auszuführenden Anwendung
     Json::Value root;
     Json::Reader reader;
+    
 
     // Funktion zum Lesen einer JSON-Datei
     void readJSON(char const *argv) {
@@ -32,6 +35,7 @@ public:
             const Json::Value hideshellValue = root[0]["hideshell"];
             const Json::Value applicationValue = root[0]["application"];
             const Json::Value entries = root[0]["entries"];
+            std::string entryArray[100];
 
             // Überprüfe, ob der Wert korrekt ausgelesen wurde
             if (!outputfileValue.isNull())
@@ -41,6 +45,7 @@ public:
                 std::cout << "Der Wert von application ist: " << applicationValue.asString() << std::endl;
 
                 for (const auto& entry : entries) {
+                    int index = 0;
                     Entry newEntry;
                     newEntry.type = entry["type"].asString();
                     if (newEntry.type == "ENV") {
@@ -53,7 +58,7 @@ public:
                     else if (newEntry.type == "PATH") {
                         newEntry.path = entry["path"].asString();
                     }
-                    entries.append(newEntry);
+                    std::string* Array[100] = {&newEntry};
             }
                 /*for ( int index = 0; index < entries.size(); ++index ){
                     std::cout << "Der Wert an Stelle " << index + 1 << " ist: " << entries[index] << std::endl;
