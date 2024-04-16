@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     else {
         //Set variables for the option char and index
         Help command;
-        Reader file;
+        JsonReader file;
         //Loop for checking each command that is given by the user
         //Only activates if the user puts - or -- infront of command
         while ((command.option = getopt_long(argc, argv, "h", longopts, NULL)) != -1) {

@@ -12,7 +12,7 @@
 //     std::string entryArray[100];
 // };
 
-class Reader {
+class JsonReader {
 public:
     std::string outputfile; // Variable zum Speichern des Wertes von "outputfile"
     bool hideshell; // Variable zum Speichern des Wertes von "hideshell"
