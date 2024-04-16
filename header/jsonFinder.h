@@ -36,7 +36,7 @@ public:
             const Json::Value hideshellValue = root[0]["hideshell"];
             const Json::Value applicationValue = root[0]["application"];
             const Json::Value entries = root[0]["entries"];
-            std::string entryArray[100][1];
+            std::string envArray[100][3];
 
             // Überprüfe, ob der Wert korrekt ausgelesen wurde
             if (!outputfileValue.isNull())
@@ -44,36 +44,41 @@ public:
                 std::cout << "Der Wert von outputfile ist: " << outputfileValue.asString() << std::endl;
                 std::cout << "Der Wert von hideshell ist: " << hideshellValue.asString() << std::endl;
                 std::cout << "Der Wert von application ist: " << applicationValue.asString() << std::endl;
-
                 for (const auto& entry : entries) {
-                    Entry newEntry;
                     if (entry["type"].asString() == "ENV") {
                         env.type = entry["type"].asString();
                         env.key = entry["key"].asString();
                         env.value = entry["value"].asString();
-                        env.pushValueInArray(env, env.index);
-                        std::cout << "env Ausgabe: \n Zeile: " << env.index << " Spalte 1:\n" << env.array[env.index][0] << "\n";
+                        env.array[env.index][0] = env.type;
+                        env.array[env.index][1] = env.key;
+                        env.array[env.index][2] = env.value;
+                        std::cout << "env Ausgabe: \nZeile: " << env.index << " Spalte 1:\n" << env.array[env.index][0] << "\n";
                         std::cout << "Zeile: " << env.index << " Spalte 2:\n" << env.array[env.index][1] << "\n";
                         std::cout << "Zeile: " << env.index << " Spalte 3:\n" << env.array[env.index][2] << "\n";
                         env.index++;
                     } 
-                    else if (newEntry.type == "EXE") {
+                    else if (entry["type"].asString() == "EXE") {
                         exe.type = entry["type"].asString();
                         exe.command = entry["command"].asString();
-                        exe.pushValueInArray(exe, exe.index);
-                        std::cout << "exe Ausgabe: \n Zeile: " << exe.index << " Spalte 1:\n" << exe.array[exe.index][0] << "\n";
+                        exe.array[exe.index][0] = exe.type;
+                        exe.array[exe.index][1] = exe.command;
+                        std::cout << "exe Ausgabe: \nZeile: " << exe.index << " Spalte 1:\n" << exe.array[exe.index][0] << "\n";
                         std::cout << "Zeile: " << exe.index << " Spalte 2:\n" << exe.array[exe.index][1] << "\n";
                         exe.index++;
                     } 
-                    else if (newEntry.type == "PATH") {
+                    else if (entry["type"].asString() == "PATH") {
                         path.type = entry["type"].asString();
                         path.path = entry["path"].asString();
-                        path.pushValueInArray(path, path.index);
-                        std::cout << "exe Ausgabe: \n Zeile: " << path.index << " Spalte 1:\n" << path.array[path.index][0] << "\n";
+                        path.array[path.index][0] = path.type;
+                        path.array[path.index][1] = path.path;
+                        std::cout << "path Ausgabe: \nZeile: " << path.index << " Spalte 1:\n" << path.array[path.index][0] << "\n";
                         std::cout << "Zeile: " << path.index << " Spalte 2:\n" << path.array[path.index][1] << "\n";
                         path.index++;
                     }     
                 }
+                std::cout << env.array[1][0] << "\n";
+                std::cout << env.array[1][1] << "\n";
+                std::cout << env.array[1][2] << "\n";
             }
             else
             {
@@ -86,15 +91,6 @@ public:
         else {
             std::cout << "File " << argv << " does not exist or the path is wrong" << "\n";
         }
-    }
-
-    std::string arrayIteration(std::string tempArray[], std::string entryArray[][1], int indexI, int indexJ) {
-        for(int j = 0; j < indexJ; j++) {
-            std::cout << entryArray[indexI][indexJ];
-            entryArray[indexI][indexJ] = tempArray[indexJ];
-            std::cout << "Stelle: " << indexI + " " + indexJ << "|||" + entryArray[indexI][indexJ] << "\n";
-        }
-        return entryArray[indexI][indexJ];
     }
 
     // Function to determine if the user inputs ends in json 
