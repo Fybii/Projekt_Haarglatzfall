@@ -3,8 +3,8 @@
 #include <fstream>
 #include <string>
 //including of the help file that will be displayed
-#include "../header/command.h"
-#include "../header/jsonFinder.h"
+#include "command.h"
+#include "jsonFinder.h"
 //function to put the help text in the console
 //test
 

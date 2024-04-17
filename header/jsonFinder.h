@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <iostream>
 #include <jsoncpp/json/json.h>
-#include "../src/jsonClass.cpp"
+#include "jsonClass.cpp"
 
 // struct Entry {
 //     std::string type;

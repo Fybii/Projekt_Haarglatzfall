@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #Alle Cpp dateien die wir brauchen:
-set(SOURCES src/main.cpp)
+set(SOURCES src/main.cpp src/jsonClass.cpp)
 
 # Fügen Sie hier alle Quelldateien hinzu
 add_executable(ProgrammierProjekt ${SOURCES})
