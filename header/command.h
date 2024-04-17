@@ -15,6 +15,7 @@ class Command {
         std::string option = "";
         option = shortopt;
         //check if the user input is equivalent to the accepted inputs
+        // getopt.h um Befehle zu parsen
         if(opt == "-" + option || opt == longopt) {
             //If true set the boolean on true and return it
             validInput = true;
@@ -40,6 +41,7 @@ class Command {
 class Help : public Command {
     public:
         //Help text that will be outputed
+        //! Char Pointer in c++ eher unoptimal
         const char * const HELPTEXT = { 
             "+--------programm help-------+\n"
             "Welcome to the help overlay!\n"
