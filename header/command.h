@@ -1,3 +1,6 @@
+#ifndef COMMAND
+#define COMMAND
+
 //class elements for all commands
 class Command {
     public:
@@ -48,3 +51,4 @@ class Help : public Command {
     }
 };
 
+#endif

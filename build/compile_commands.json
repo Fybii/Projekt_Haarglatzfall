@@ -1,12 +1,12 @@
 [
 {
-  "directory": "/home/fabi/Programmieren/Projekt_Haarglatzfall-1/build",
-  "command": "/usr/bin/g++ -I/home/fabi/Programmieren/Projekt_Haarglatzfall-1/header -g -std=gnu++23 -o CMakeFiles/ProgrammierProjekt.dir/src/main.cpp.o -c /home/fabi/Programmieren/Projekt_Haarglatzfall-1/src/main.cpp",
-  "file": "/home/fabi/Programmieren/Projekt_Haarglatzfall-1/src/main.cpp"
+  "directory": "/home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall-1/build",
+  "command": "/usr/bin/g++  -I/home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall-1/header -g -std=gnu++23 -o CMakeFiles/ProgrammierProjekt.dir/src/main.cpp.o -c /home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall-1/src/main.cpp",
+  "file": "/home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall-1/src/main.cpp"
 },
 {
-  "directory": "/home/fabi/Programmieren/Projekt_Haarglatzfall-1/build",
-  "command": "/usr/bin/g++ -I/home/fabi/Programmieren/Projekt_Haarglatzfall-1/header -g -std=gnu++23 -o CMakeFiles/ProgrammierProjekt.dir/src/jsonClass.cpp.o -c /home/fabi/Programmieren/Projekt_Haarglatzfall-1/src/jsonClass.cpp",
-  "file": "/home/fabi/Programmieren/Projekt_Haarglatzfall-1/src/jsonClass.cpp"
+  "directory": "/home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall-1/build",
+  "command": "/usr/bin/g++  -I/home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall-1/header -g -std=gnu++23 -o CMakeFiles/ProgrammierProjekt.dir/src/jsonClass.cpp.o -c /home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall-1/src/jsonClass.cpp",
+  "file": "/home/ruth/DHBWProjekte/C++/Projekt_Haarglatzfall-1/src/jsonClass.cpp"
 }
 ]

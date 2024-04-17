@@ -1,8 +1,11 @@
+#ifndef JSON_FINDER
+#define JSON_FINDER 
+
 #include <fstream>
 #include <filesystem>
 #include <iostream>
 #include <jsoncpp/json/json.h>
-#include "jsonClass.cpp"
+#include "jsonClass.h"
 
 // struct Entry {
 //     std::string type;
@@ -139,3 +142,5 @@ public:
     return true;
 }
 };
+
+#endif   

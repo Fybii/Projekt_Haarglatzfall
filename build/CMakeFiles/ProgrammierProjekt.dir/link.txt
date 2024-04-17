@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/ProgrammierProjekt.dir/src/main.cpp.o CMakeFiles/ProgrammierProjekt.dir/src/jsonClass.cpp.o -o ProgrammierProjekt  -ljsoncpp 

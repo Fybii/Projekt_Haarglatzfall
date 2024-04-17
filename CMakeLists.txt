@@ -11,4 +11,5 @@ set(SOURCES src/main.cpp src/jsonClass.cpp)
 add_executable(ProgrammierProjekt ${SOURCES})
 
 target_include_directories(ProgrammierProjekt PRIVATE ${PROJECT_SOURCE_DIR}/header)
+target_link_libraries(ProgrammierProjekt jsoncpp)
 # Konfigurieren Sie hier zusätzliche Einstellungen, z. B. Compiler-Flags oder Bibliotheken
