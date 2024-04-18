@@ -4,7 +4,7 @@
 #include <string>
 //including of the help file that will be displayed
 #include "command.h"
-#include "jsonFinder.h"
+#include "jsonFinder.cpp"
 //function to put the help text in the console
 //test
 
