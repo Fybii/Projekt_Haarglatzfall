@@ -5,17 +5,21 @@
 
 class Command {
 public:
-    int option;
-    int i = 1;
-    
+    int option; // Option variable
+    int i = 1; // Counter variable
+
+    // Function to check if the input from the user is correct: For one short and one long valid options
+    // Parameters needed: Input from the user, option variable from getopts, accepted longopts command  
     bool checkInput(std::string opt, char shortopt, std::string longopt);
+
+    // Function to check if the input from the user is correct: For only longopts
     bool checkInput(std::string opt, std::string longopt);
 };
 
 class Help : public Command {
 public:
-    static const char * const HELPTEXT;
-    void showHelpText();
+    static const char * const HELPTEXT; // Declaration of static constant for help text
+    void showHelpText(); // Function to display the help text
 };
 
 #endif
