@@ -1,18 +1,23 @@
+#ifndef CREATEBATCH
+#define CREATEBATCH
+
 #include <jsoncpp/json/json.h>
 #include <fstream>
 #include <iostream>
+#include "createBatch.h"
+#include "jsonClass.h"
+#include "jsonFinder.h"
+
 
 // Declare outputFileValue as a global variable
-Json::Value outputFileValue;
-//Momontarily set as false (can change)
-bool hideShell = false;
 
+//Momontarily set as false (can change)
 // Function to create and write to the batch file
-void createBatchFile() 
+void createBatchFile(JsonReader file) 
 {
     // Open the batch file with the name from outputFileValue
-    std::ofstream batchFile(outputFileValue.asString() + ".bat", std::ios::binary);  // Öffnen im Binärmodus
-
+    std::ofstream batchFile(file.outputfileValue.asString() + ".bat", std::ios::binary);  // Öffnen im Binärmodus
+    
     // Check if the file is opened successfully
     if (!batchFile.is_open())
     {
@@ -24,7 +29,7 @@ void createBatchFile()
     batchFile << "@echo off" << std::endl;
 
     // Check if hideShell is true
-    if (hideShell)
+    if (file.hideshellValue)
     {
         batchFile << "cmd.exe /c exit\r\n";  // Add the exit command to close the Command Prompt window
     }
@@ -44,13 +49,13 @@ void createBatchFile()
         std::string command = "start " + outputFileValue.asString() + ".bat";
         system(command.c_str());
     #elif __linux__ || __APPLE__
-        std::string command = "chmod +x \"" + outputFileValue.asString() + ".bat\" && ./\"";
-        command += outputFileValue.asString() + ".bat\"";
+        std::string command = "chmod +x \"" + file.outputfileValue.asString() + ".bat\" && ./\"";
+        command += file.outputfileValue.asString() + ".bat\"";
         system(command.c_str());
     #endif
 }
 
-int main() 
+void mainA(JsonReader file) 
 { 
     // Open the JSON file
     std::ifstream batchFile("../Test2.json", std::ifstream::binary);
@@ -66,7 +71,7 @@ int main()
     if (batchFile.fail())
     {
         std::cerr << "Error reading JSON file." << std::endl;
-        return 1;
+        //return 1;
     }
 
     // Check if the root is an array and has at least one element
@@ -79,38 +84,41 @@ int main()
         if (firstElement.isObject())
         {
             // Access the value with the key "outputfile"
-            outputFileValue = firstElement["outputfile"];
+        file.outputfileValue = firstElement["outputfile"];
 
             // Access the value with the key "hideshell"
-            hideShell = firstElement.get("hideshell", false).asBool();
+            file.hideshellValue = firstElement.get("hideshell", false).asBool();
 
 
             // Check if the key "outputfile" exists in the JSON
-            if (!outputFileValue.isNull())
+            if (!file.outputfileValue.isNull())
             {
                 // Print the value of "outputfile"
-                std::cout << "Value of outputfile: " << outputFileValue.asString() << std::endl;
+                std::cout << "Value of outputfile: " << file.outputfileValue.asString() << std::endl;
 
                 // Create and write to the batch file
-                createBatchFile();
+                createBatchFile(file);
             }
             else
             {
                 std::cerr << "Key 'outputfile' not found in JSON." << std::endl;
-                return 1;  // Return if key not found
+                //return 1;  // Return if key not found
             }
         }
         else
         {
             std::cerr << "The first element is not an object." << std::endl;
-            return 1;  // Return if not an object
+            //return 1;  // Return if not an object
         }
     }
     else
     {
         std::cerr << "Root is not an array or is empty." << std::endl;
-        return 1;  // Return if root is not an array or is empty
+        //return 1;  // Return if root is not an array or is empty
     }
 
-    return 0;
+   //return 0;
 }
+
+
+#endif

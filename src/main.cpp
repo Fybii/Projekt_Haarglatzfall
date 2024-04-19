@@ -4,10 +4,11 @@
 #include <string>
 //including of the help file that will be displayed
 #include "command.h"
+#include "jsonClass.h"
 #include "jsonFinder.h"
+#include "createBatch.h"
 //function to put the help text in the console
 //test
-
 //longopts structure which is used to use long operators as commands
 struct option longopts[] = {
     //input: help, no argument is needed and safe as char 'h';
@@ -58,11 +59,16 @@ int main(int argc, char *argv[])
             std::cout << argv[i] << " ends with json" << "\n";
             //executes the readJSON function in jsonFinder.h
             file.readJSON(argv[i]);
+            std::cout << "outputfile: " << file.outputfileValue << "\n";
+            std::cout << "hideshell: " << file.hideshellValue << "\n";
+            std::cout << "application: " << file.applicationValue << "\n";
+            std::cout << "env: " << file.env.array[0][1];
+            createBatchFile(file);
+            
             //counts up to read next JSON data
             i++;
             //Checks if the next user input isn't NULL
         } 
-        
     }
     return 0;
 }

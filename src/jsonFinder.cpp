@@ -3,6 +3,7 @@
 #include <iostream>
 #include <jsoncpp/json/json.h>
 #include "jsonClass.h" // Include, falls benötigt
+#include "CreateBatch.cpp"
 
 // Funktion zum Lesen einer JSON-Datei
 void JsonReader::readJSON(const char* argv) {
@@ -16,10 +17,10 @@ void JsonReader::readJSON(const char* argv) {
         std::cout << root << std::endl;
         // Überprüfen, ob die Datei geöffnet wurde
         if (file.is_open()) {
-            const Json::Value outputfileValue = root[0]["outputfile"];
-            const Json::Value hideshellValue = root[0]["hideshell"];
-            const Json::Value applicationValue = root[0]["application"];
-            const Json::Value entries = root[0]["entries"];
+            outputfileValue = root[0]["outputfile"];
+            hideshellValue = root[0]["hideshell"];
+            applicationValue = root[0]["application"];
+            entries = root[0]["entries"];
             std::string envArray[100][3];
 
             // Überprüfe, ob der Wert korrekt ausgelesen wurde
