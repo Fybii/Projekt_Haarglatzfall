@@ -24,13 +24,13 @@ void createBatchFile(JsonReader file)
     // Write commands to the batch file
     batchFile << "@echo off" << std::endl;
 
-    // Process entries
-    if (file.exe.array)
-    
-    {
-        for (const auto& entry : file.exe.array)
-        {
-            
+    int exeSize = sizeof(file.exe.array)/sizeof(file.exe.array[0]);
+    // Prozess entries
+    for (int i = 0; i < exeSize; i++) {
+
+            std::string command = file.exe.array[i][1];
+
+            batchFile << command << " && ";
         }
         /*
         for (const auto& entry : file.entries)
@@ -57,7 +57,6 @@ void createBatchFile(JsonReader file)
             }
         }
         */
-    }
 
     // Check if hideShell is true
     if (file.hideshellValue)
