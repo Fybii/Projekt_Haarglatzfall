@@ -5,7 +5,7 @@
         "entries" : [
             {"type": "EXE", "command": ""},
             {"type": "ENV", "key": "BOOST_INCLUDEDIR21", "value": "C:\\sicherung\\tools\\MinGW\\include"},
-            {"type": "PATH", "path": "C:\\sicherung\\tools\\VSCode"},
+            {"type": "PATH", "path": "C:\\DHBW Projekte"},
             {"type": "ENV", "key": "BOOST_INCLUDEDIR", "value": "C:\\sicherung\\tools\\MinGW\\include"}
         ],
         "application" : null
