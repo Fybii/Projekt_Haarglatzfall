@@ -8,6 +8,6 @@
             {"type": "PATH", "path": "C:\\sicherung\\tools\\VSCode"},
             {"type": "ENV", "key": "BOOST_INCLUDEDIR", "value": "C:\\sicherung\\tools\\MinGW\\include"}
         ],
-        "application" : "stinkt"
+        "application" : null
     }
 ] 

@@ -22,7 +22,18 @@ void createBatchFile(JsonReader file)
     }
 
     // Write commands to the batch file
-    batchFile << "@echo off" << std::endl;
+
+if (file.hideshellValue == true)
+    {
+        batchFile << "echo off\r\n";
+        batchFile << "cmd.exe /c exit\r\n";  // Add the exit command to close the Command Prompt window
+    }
+    else
+    {
+        batchFile << "echo on\r\n";          // Re-enable command echoing
+        batchFile << "cmd.exe /k\r\n";        // Keep the Command Prompt window open
+    }
+
 
     int exeSize = sizeof(file.exe.array) / sizeof(file.exe.array[0]);
     // Prozess entries
@@ -30,7 +41,9 @@ void createBatchFile(JsonReader file)
         if (!file.exe.array[i][0].empty())
         {
             std::string command = file.exe.array[i][1];
-            batchFile << command << " && ";
+            if (!command.empty()) {
+                batchFile << command << " && ";
+            }
         }
     }
     int envSize = sizeof(file.env.array)/sizeof(file.env.array[0]);
@@ -40,8 +53,9 @@ void createBatchFile(JsonReader file)
         {
             std::string key = file.env.array[i][1];
             std::string value = file.env.array[i][2];
-
+            if (!key.empty() && !value.empty()) {
             batchFile << "set " << key << "=" << value << " && ";
+            }
         }
     }
     int pathSize = sizeof(file.path.array)/sizeof(file.path.array[0]);
@@ -50,7 +64,12 @@ void createBatchFile(JsonReader file)
         if (!file.path.array[i][0].empty())
         {
             std::string path = file.path.array[i][1];
-            batchFile << "set PATH=%PATH%;" << path << " && ";
+            if (!path.empty() && !file.path.array[i+1][1].empty()) {
+                batchFile << "set PATH=%PATH%;" << path << " && ";
+            }
+            else {
+                batchFile << "set PATH=%PATH%;" << path;
+            }
         }
     }
         
@@ -81,15 +100,7 @@ void createBatchFile(JsonReader file)
         */
 
     // Check if hideShell is true
-    if (file.hideshellValue)
-    {
-        batchFile << "\ncmd.exe /c exit\r\n";  // Add the exit command to close the Command Prompt window
-    }
-    else
-    {
-        batchFile << "\ncmd.exe /k\r\n";        // Keep the Command Prompt window open
-        batchFile << "@echo on\r\n";          // Re-enable command echoing
-    }
+    
 
     if (!file.applicationValue.isNull() && !file.applicationValue.asString().empty())
 {
