@@ -8,10 +8,6 @@
 #include "jsonClass.h"
 #include "jsonFinder.h"
 
-
-// Declare outputFileValue as a global variable
-
-//Momontarily set as false (can change)
 // Function to create and write to the batch file
 void createBatchFile(JsonReader file) 
 {
@@ -28,6 +24,41 @@ void createBatchFile(JsonReader file)
     // Write commands to the batch file
     batchFile << "@echo off" << std::endl;
 
+    // Process entries
+    if (file.exe.array)
+    
+    {
+        for (const auto& entry : file.exe.array)
+        {
+            
+        }
+        /*
+        for (const auto& entry : file.entries)
+        {
+            std::string type = entry["type"].asString();
+            
+            if (type == "ENV")
+            {
+                std::string key = entry["key"].asString();
+                std::string value = entry["value"].asString();
+                
+                batchFile << "set " << key << "=" << value << " && ";
+            }
+            else if (type == "EXE")
+            {
+                std::string command = entry["command"].asString();
+                
+                batchFile << command << " && ";
+            }
+            else if (type == "PATH")
+            {
+                std::string path = entry["path"].asString();
+                batchFile << "set PATH=%PATH%;" << path << " && ";
+            }
+        }
+        */
+    }
+
     // Check if hideShell is true
     if (file.hideshellValue)
     {
@@ -39,6 +70,11 @@ void createBatchFile(JsonReader file)
         batchFile << "@echo on\r\n";          // Re-enable command echoing
     }
 
+    if (!file.applicationValue.isNull() && !file.applicationValue.asString().empty())
+{
+    batchFile << file.applicationValue.asString() << " && ";
+}
+
     // Close the batch file
     batchFile.close();
 
@@ -46,7 +82,7 @@ void createBatchFile(JsonReader file)
 
     // Check the operating system and execute the batch file
     #ifdef _WIN32
-        std::string command = "start " + outputFileValue.asString() + ".bat";
+        std::string command = "start " + file.outputfileValue.asString() + ".bat";
         system(command.c_str());
     #elif __linux__ || __APPLE__
         std::string command = "chmod +x \"" + file.outputfileValue.asString() + ".bat\" && ./\"";
@@ -83,7 +119,7 @@ void mainA(JsonReader file)
         // Check if the first element is an object
         if (firstElement.isObject())
         {
-            // Access the value with the key "outputfile"
+         // Access the value with the key "outputfile"
         file.outputfileValue = firstElement["outputfile"];
 
             // Access the value with the key "hideshell"
