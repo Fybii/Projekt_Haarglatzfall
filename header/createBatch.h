@@ -24,14 +24,36 @@ void createBatchFile(JsonReader file)
     // Write commands to the batch file
     batchFile << "@echo off" << std::endl;
 
-    int exeSize = sizeof(file.exe.array)/sizeof(file.exe.array[0]);
+    int exeSize = sizeof(file.exe.array) / sizeof(file.exe.array[0]);
     // Prozess entries
     for (int i = 0; i < exeSize; i++) {
-
+        if (!file.exe.array[i][0].empty())
+        {
             std::string command = file.exe.array[i][1];
-
             batchFile << command << " && ";
         }
+    }
+    int envSize = sizeof(file.env.array)/sizeof(file.env.array[0]);
+    // Prozess entries
+    for (int i = 0; i < envSize; i++) {
+        if (!file.env.array[i][0].empty())
+        {
+            std::string key = file.env.array[i][1];
+            std::string value = file.env.array[i][2];
+
+            batchFile << "set " << key << "=" << value << " && ";
+        }
+    }
+    int pathSize = sizeof(file.path.array)/sizeof(file.path.array[0]);
+    // Prozess entries
+    for (int i = 0; i < pathSize; i++) {
+        if (!file.path.array[i][0].empty())
+        {
+            std::string path = file.path.array[i][1];
+            batchFile << "set PATH=%PATH%;" << path << " && ";
+        }
+    }
+        
         /*
         for (const auto& entry : file.entries)
         {
@@ -61,17 +83,17 @@ void createBatchFile(JsonReader file)
     // Check if hideShell is true
     if (file.hideshellValue)
     {
-        batchFile << "cmd.exe /c exit\r\n";  // Add the exit command to close the Command Prompt window
+        batchFile << "\ncmd.exe /c exit\r\n";  // Add the exit command to close the Command Prompt window
     }
     else
     {
-        batchFile << "cmd.exe /k\r\n";        // Keep the Command Prompt window open
+        batchFile << "\ncmd.exe /k\r\n";        // Keep the Command Prompt window open
         batchFile << "@echo on\r\n";          // Re-enable command echoing
     }
 
     if (!file.applicationValue.isNull() && !file.applicationValue.asString().empty())
 {
-    batchFile << file.applicationValue.asString() << " && ";
+    batchFile << file.applicationValue.asString() << std::endl;
 }
 
     // Close the batch file
