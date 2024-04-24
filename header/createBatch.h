@@ -111,7 +111,7 @@ void createBatchFile(JsonReader file)
     batchFile.close();
 
     std::cout << "Batch file created successfully." << std::endl;
-
+/*
     // Check the operating system and execute the batch file
     #ifdef _WIN32
         std::string command = "start " + file.outputfileValue.asString() + ".bat";
@@ -121,6 +121,7 @@ void createBatchFile(JsonReader file)
         command += file.outputfileValue.asString() + ".bat\"";
         system(command.c_str());
     #endif
+    */
 }
 
 void mainA(JsonReader file) 
