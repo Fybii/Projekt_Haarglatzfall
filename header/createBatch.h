@@ -22,17 +22,16 @@ void createBatchFile(JsonReader file)
     }
 
     // Write commands to the batch file
+    batchFile << "@ECHO OFF\n";
 
-if (file.hideshellValue == true)
-    {
-        batchFile << "echo off\r\n";
-        batchFile << "cmd.exe /c exit\r\n";  // Add the exit command to close the Command Prompt window
-    }
-    else
-    {
-        batchFile << "echo on\r\n";          // Re-enable command echoing
-        batchFile << "cmd.exe /k\r\n";        // Keep the Command Prompt window open
-    }
+    if (file.hideshellValue == true)
+        {
+            batchFile << "C:\\Windows\\System32\\cmd.exe /c \"";  // close the Command Prompt window
+        }
+        else
+        {
+            batchFile << "C:\\Windows\\System32\\cmd.exe /k \"";        // Keep the Command Prompt window open
+        }
 
 
     int exeSize = sizeof(file.exe.array) / sizeof(file.exe.array[0]);
@@ -103,10 +102,11 @@ if (file.hideshellValue == true)
     
 
     if (!file.applicationValue.isNull() && !file.applicationValue.asString().empty())
-{
+    {
     batchFile << file.applicationValue.asString() << std::endl;
-}
+    }
 
+    batchFile << "\"\n@ECHO ON\r";
     // Close the batch file
     batchFile.close();
 
