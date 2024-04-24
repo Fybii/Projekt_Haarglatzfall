@@ -8,34 +8,34 @@
 #include "jsonClass.h"
 #include "jsonFinder.h"
 
-// Function to create and write to the batch file
+// Function to create a batch file
 void createBatchFile(JsonReader file) 
 {
-    // Open the batch file with the name from outputFileValue
-    std::ofstream batchFile(file.outputfileValue.asString() + ".bat", std::ios::binary);  // Öffnen im Binärmodus
+    // Open a new batch file with the outputfilename from the Json
+    std::ofstream batchFile(file.outputfileValue.asString() + ".bat", std::ios::binary);  
     
-    // Check if the file is opened successfully
+    // Check if the file is successfully opened
     if (!batchFile.is_open())
     {
         std::cerr << "Error in creating batch file!" << std::endl;
         return;
     }
-
-    // Write commands to the batch file
+    // initial batch file command
     batchFile << "@ECHO OFF\n";
 
+    // Check if the shell should be hidden
     if (file.hideshellValue == true)
         {
-            batchFile << "C:\\Windows\\System32\\cmd.exe /c \"";  // close the Command Prompt window
+            batchFile << "C:\\Windows\\System32\\cmd.exe /c \"";  // 
         }
         else
         {
-            batchFile << "C:\\Windows\\System32\\cmd.exe /k \"";        // Keep the Command Prompt window open
+            batchFile << "C:\\Windows\\System32\\cmd.exe /k \"";        
         }
 
-
+    //calculate the number of elements in the exe-array 
     int exeSize = sizeof(file.exe.array) / sizeof(file.exe.array[0]);
-    // Prozess entries
+    //Print each command in the array into the batchfile and seperate them with && 
     for (int i = 0; i < exeSize; i++) {
         if (!file.exe.array[i][0].empty())
         {
@@ -45,8 +45,10 @@ void createBatchFile(JsonReader file)
             }
         }
     }
+    //calculate the number of elements in the env-array 
     int envSize = sizeof(file.env.array)/sizeof(file.env.array[0]);
-    // Prozess entries
+    //Set each key in the array to its corresponding value and print it 
+    //into the batchfile and seperate them with && 
     for (int i = 0; i < envSize; i++) {
         if (!file.env.array[i][0].empty())
         {
@@ -57,8 +59,9 @@ void createBatchFile(JsonReader file)
             }
         }
     }
+    //calculate the number of elements in the path-array 
     int pathSize = sizeof(file.path.array)/sizeof(file.path.array[0]);
-    // Prozess entries
+    //Set the Path and Print it into the batchfile. Use && if its not the last entry
     for (int i = 0; i < pathSize; i++) {
         if (!file.path.array[i][0].empty())
         {
@@ -71,123 +74,19 @@ void createBatchFile(JsonReader file)
             }
         }
     }
-        
-        /*
-        for (const auto& entry : file.entries)
-        {
-            std::string type = entry["type"].asString();
-            
-            if (type == "ENV")
-            {
-                std::string key = entry["key"].asString();
-                std::string value = entry["value"].asString();
-                
-                batchFile << "set " << key << "=" << value << " && ";
-            }
-            else if (type == "EXE")
-            {
-                std::string command = entry["command"].asString();
-                
-                batchFile << command << " && ";
-            }
-            else if (type == "PATH")
-            {
-                std::string path = entry["path"].asString();
-                batchFile << "set PATH=%PATH%;" << path << " && ";
-            }
-        }
-        */
 
-    // Check if hideShell is true
+
     
-
+    //If there is an applicationValue then print it
     if (!file.applicationValue.isNull() && !file.applicationValue.asString().empty())
     {
     batchFile << file.applicationValue.asString() << std::endl;
     }
-
+    //Last batch command
     batchFile << "\"\n@ECHO ON\r";
-    // Close the batch file
     batchFile.close();
 
     std::cout << "Batch file created successfully." << std::endl;
-/*
-    // Check the operating system and execute the batch file
-    #ifdef _WIN32
-        std::string command = "start " + file.outputfileValue.asString() + ".bat";
-        system(command.c_str());
-    #elif __linux__ || __APPLE__
-        std::string command = "chmod +x \"" + file.outputfileValue.asString() + ".bat\" && ./\"";
-        command += file.outputfileValue.asString() + ".bat\"";
-        system(command.c_str());
-    #endif
-    */
 }
-
-void mainA(JsonReader file) 
-{ 
-    // Open the JSON file
-    std::ifstream batchFile("../Test2.json", std::ifstream::binary);
-
-    // Parse the JSON file into a Json::Value object
-    Json::Value root;
-    batchFile >> root;
-
-    // Close the file
-    batchFile.close();
-
-    // Check if the JSON parsing was successful
-    if (batchFile.fail())
-    {
-        std::cerr << "Error reading JSON file." << std::endl;
-        //return 1;
-    }
-
-    // Check if the root is an array and has at least one element
-    if (root.isArray() && !root.empty())
-    {
-        // Access the first element of the array
-        Json::Value firstElement = root[0];
-
-        // Check if the first element is an object
-        if (firstElement.isObject())
-        {
-         // Access the value with the key "outputfile"
-        file.outputfileValue = firstElement["outputfile"];
-
-            // Access the value with the key "hideshell"
-            file.hideshellValue = firstElement.get("hideshell", false).asBool();
-
-
-            // Check if the key "outputfile" exists in the JSON
-            if (!file.outputfileValue.isNull())
-            {
-                // Print the value of "outputfile"
-                std::cout << "Value of outputfile: " << file.outputfileValue.asString() << std::endl;
-
-                // Create and write to the batch file
-                createBatchFile(file);
-            }
-            else
-            {
-                std::cerr << "Key 'outputfile' not found in JSON." << std::endl;
-                //return 1;  // Return if key not found
-            }
-        }
-        else
-        {
-            std::cerr << "The first element is not an object." << std::endl;
-            //return 1;  // Return if not an object
-        }
-    }
-    else
-    {
-        std::cerr << "Root is not an array or is empty." << std::endl;
-        //return 1;  // Return if root is not an array or is empty
-    }
-
-   //return 0;
-}
-
 
 #endif
