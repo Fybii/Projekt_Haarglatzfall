@@ -1,6 +1,4 @@
-#include "createBatch.h"
 #include "jsonFinder.h"
-#include "jsonClass.h"
 #include <fstream>
 #include <iostream>
 
