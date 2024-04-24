@@ -3,7 +3,7 @@
 #include <iostream>
 #include <jsoncpp/json/json.h>
 #include "jsonClass.h" // Include, falls benötigt
-#include "CreateBatch.cpp"
+#include "createBatch.h"
 
 // Funktion zum Lesen einer JSON-Datei
 void JsonReader::readJSON(const char* argv) {
