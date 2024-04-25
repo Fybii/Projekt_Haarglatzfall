@@ -7,6 +7,22 @@ class Entry {
     public:
         std::string type;
         int index = 0;
+
+        void clearArray(std::string array[][2], int arraySize) {
+            for (int i = 0; i < arraySize; i++) {
+                for (int j = 0; j <= 2; j++) {
+                    array[i][j] = "";
+                }
+            }
+        }
+
+        void clearArray(std::string array[][3], int arraySize) {
+            for (int i = 0; i < arraySize; i++) {
+                for (int j = 0; j <= 3; j++) {
+                    array[i][j] = "";
+                }
+            }
+        }
 };
 
 class ENV : public Entry {

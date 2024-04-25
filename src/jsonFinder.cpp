@@ -17,10 +17,10 @@ void JsonReader::readJSON(const char* argv) {
         std::cout << root << std::endl;
         // Überprüfen, ob die Datei geöffnet wurde
         if (file.is_open()) {
-            outputfileValue = root["outputfile"];
-            hideshellValue = root["hideshell"];
-            applicationValue = root["application"];
-            entries = root["entries"];
+            outputfileValue = root[0]["outputfile"];
+            hideshellValue = root[0]["hideshell"];
+            applicationValue = root[0]["application"];
+            entries = root[0]["entries"];
             std::string envArray[100][3];
 
             // Überprüfe, ob der Wert korrekt ausgelesen wurde
@@ -60,6 +60,9 @@ void JsonReader::readJSON(const char* argv) {
                         path.index++;
                     }     
                 }
+                env.index = 0;
+                exe.index = 0;
+                path.index = 0;
                 std::cout << env.array[1][0] << "\n";
                 std::cout << env.array[1][1] << "\n";
                 std::cout << env.array[1][2] << "\n";

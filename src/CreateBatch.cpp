@@ -35,7 +35,17 @@ void createBatchFile(JsonReader file)
             std::string command = file.exe.array[i][1];
             if (!command.empty())
             {
-                batchFile << command << " && ";
+                if(!command.empty() && !file.exe.array[i + 1][1].empty()) {
+                    batchFile << command << " && ";
+                }
+                else {
+                    if (!file.env.array[0][0].empty()) {
+                        batchFile << command << " && ";
+                    }
+                    else {
+                        batchFile << command;
+                    }
+                }
             }
         }
     }
@@ -49,7 +59,18 @@ void createBatchFile(JsonReader file)
             std::string value = file.env.array[i][2];
             if (!key.empty() && !value.empty())
             {
-                batchFile << "set " << key << "=" << value << " && ";
+                if (!key.empty() && !file.env.array[i + 1][1].empty() && !file.path.array[0][0].empty()) {
+                    batchFile << "set " << key << "=" << value << " && ";
+                }
+                else 
+                {
+                    if (!file.env.array[0][0].empty()) {
+                        batchFile << "set " << key << "=" << value << " && ";
+                    }
+                    else {
+                        batchFile << "set " << key << "=" << value;
+                    }
+                }
             }
         }
     }
@@ -81,8 +102,16 @@ void createBatchFile(JsonReader file)
     batchFile.close();
 
     std::cout << "Batch-Datei erfolgreich erstellt." << std::endl;
+
+    file.exe.clearArray(file.exe.array, exeSize);
+    file.env.clearArray(file.env.array, envSize);
+    file.path.clearArray(file.path.array, pathSize);
+
+    
+    
 }
 
+/*
 void mainA(JsonReader file)
 {
     std::ifstream batchFile("../Test2.json", std::ifstream::binary);
@@ -128,3 +157,4 @@ void mainA(JsonReader file)
         std::cerr << "Root ist kein Array oder ist leer." << std::endl;
     }
 }
+*/
