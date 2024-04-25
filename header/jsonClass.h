@@ -16,7 +16,7 @@ class Entry {
             }
         }
 
-        void clearArray(std::string array[][3], int arraySize) {
+    void clearArray(std::string array[][3], int arraySize) {
             for (int i = 0; i < arraySize; i++) {
                 for (int j = 0; j < 3; j++) {
                     array[i][j] = "";

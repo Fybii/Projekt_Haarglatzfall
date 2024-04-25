@@ -62,12 +62,7 @@ int main(int argc, char *argv[])
             }
             //executes the readJSON function in jsonFinder.h
             file.readJSON(argv[i]);
-            std::cout << "outputfile: " << file.outputfileValue << "\n";
-            std::cout << "hideshell: " << file.hideshellValue << "\n";
-            std::cout << "application: " << file.applicationValue << "\n";
-            std::cout << "env: " << file.env.array[0][1];
             createBatchFile(file);
-            
             //counts up to read next JSON data
             i++;
             //Checks if the next user input isn't NULL

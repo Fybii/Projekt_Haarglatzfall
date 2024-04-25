@@ -1,4 +1,5 @@
 #include "jsonFinder.h"
+#include "jsonClass.h"
 #include <fstream>
 #include <iostream>
 
@@ -36,16 +37,13 @@ void createBatchFile(JsonReader file)
             if (!command.empty())
             {
                 if(!command.empty() && !file.exe.array[i + 1][1].empty()) {
-                    std::cout << "a\n";
                     batchFile << command << " && ";
                 }
                 else {
                     if (!file.env.array[0][0].empty()) {
-                        std::cout << "b\n";
                         batchFile << command << " && ";
                     }
                     else {
-                        std::cout << "c\n";
                         batchFile << command;
                     }
                 }

@@ -93,7 +93,7 @@ bool JsonReader::check_types(std::string path) {
     std::string line;
     int lineNumber = 0;
 
-    // Read the JSON file line by line and check if the 
+    // Read the JSON file line by line and check if the entries are right
     while (getline(file, line)) {
         lineNumber++;
         if (line.find("type") != std::string::npos) {
