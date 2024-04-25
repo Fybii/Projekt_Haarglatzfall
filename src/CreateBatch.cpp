@@ -64,7 +64,7 @@ void createBatchFile(JsonReader file)
                 }
                 else 
                 {
-                    if (!file.env.array[0][0].empty()) {
+                    if (!file.path.array[0][0].empty()) {
                         batchFile << "set " << key << "=" << value << " && ";
                     }
                     else {
@@ -107,8 +107,6 @@ void createBatchFile(JsonReader file)
     file.env.clearArray(file.env.array, envSize);
     file.path.clearArray(file.path.array, pathSize);
 
-    
-    
 }
 
 /*

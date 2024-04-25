@@ -1,10 +1,9 @@
-[
-    {
+{
     "outputfile": "testo",
 	"hideshell": true,
 	"entries": [
-		{"type": "EXE", "command": "C:\\Users\\z0247951\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"}
+		{"type": "EXE", "command": "C:\\Users\\z0247951\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"},
+		{"type": "ENV", "key": "aaaaa", "value": "bbbbbb"}
 		],
 	"application": null
     }
-]
