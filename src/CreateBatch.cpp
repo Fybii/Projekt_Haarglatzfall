@@ -36,13 +36,16 @@ void createBatchFile(JsonReader file)
             if (!command.empty())
             {
                 if(!command.empty() && !file.exe.array[i + 1][1].empty()) {
+                    std::cout << "a\n";
                     batchFile << command << " && ";
                 }
                 else {
                     if (!file.env.array[0][0].empty()) {
+                        std::cout << "b\n";
                         batchFile << command << " && ";
                     }
                     else {
+                        std::cout << "c\n";
                         batchFile << command;
                     }
                 }
@@ -92,12 +95,12 @@ void createBatchFile(JsonReader file)
         }
     }
 
-    if (!file.applicationValue.isNull() && !file.applicationValue.asString().empty())
+    if (!file.applicationValue.isNull())
     {
-        batchFile << file.applicationValue.asString() << std::endl;
+        batchFile << " && start \"MinGW\" " << file.applicationValue.asString();
     }
 
-    batchFile << "\"\n@ECHO ON\r";
+    batchFile << "\"\n@ECHO ON\r\n";
     // Batch-Datei schließen
     batchFile.close();
 

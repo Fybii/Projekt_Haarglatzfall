@@ -2,8 +2,7 @@
     "outputfile": "testo",
 	"hideshell": true,
 	"entries": [
-		{"type": "EXE", "command": "C:\\Users\\z0247951\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"},
-		{"type": "ENV", "key": "aaaaa", "value": "bbbbbb"}
+		{"type": "EXE", "command": "C:\\Users\\z0247951\\AppData\\Local\\Programs\\obsidian\\Obsidian.exe"}
 		],
-	"application": null
+	"application": "C:\\Users\\z0247951\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
     }

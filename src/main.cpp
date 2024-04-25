@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     int i = 1;
     //only start programm if user input is available 
     if(argc < 2) {
-        std::cerr << "Error: No File or command was given to the programm\n";
+        std::cerr << "Error: No File or command was given to the programm, Enter -h or --help to see the helpdesk\n";
     }
     else {
         //Set variables for the option char and index
@@ -35,15 +35,16 @@ int main(int argc, char *argv[])
             case 'h':
                 if(command.checkInput(std::string(argv[command.i]), command.option, "--help")) {
                 command.showHelpText();
+                exit(0);
                 }
                 else {
-                    std::cerr << "Error: Not a valid command\n";
+                    std::cerr << "Error: Not a valid command, Enter -h or --help to see the helpdesk\n";
                     return 1;
                 }
                 break;
             
             default:
-                std::cerr << "invalid Input\n";
+                std::cerr << "invalid Input, Enter -h or --help to see the helpdesk\n";
                 break;
             };
         };
@@ -51,12 +52,14 @@ int main(int argc, char *argv[])
         //checks if the end of the file Name ends with ".json"
         while (1) {
             if(argv[i] != NULL) {
-                file.endsWithJson(argv[i], ".json");
+                if(!file.endsWithJson(argv[i], ".json")) {
+                    std::cout << "Filename: " << argv[i] << " does not end in .json" << "\n";
+                    exit(0);
+                }
             }
             else {
                 break;
             }
-            std::cout << argv[i] << " ends with json" << "\n";
             //executes the readJSON function in jsonFinder.h
             file.readJSON(argv[i]);
             std::cout << "outputfile: " << file.outputfileValue << "\n";
