@@ -1,6 +1,6 @@
 #include "jsonFinder.h"
 #include "jsonClass.h"
-#include <fstream>d
+#include <fstream>
 #include <iostream>
 
 void createBatchFile(JsonReader file)
@@ -13,8 +13,8 @@ void createBatchFile(JsonReader file)
 
     for (int i = 0; i < nameLength; i++) {
         if (name[i] == '.') {
-            size_t pointPosition = name.find{"."}
-            beforePoint = name.substr(0, pointPosition);
+            size_t pointPosition = name.find(".");
+            std::string beforePoint = name.substr(0, pointPosition);
             std::ofstream batchFile(beforePoint + ".bat", std::ios::binary);
             fileName = beforePoint + ".bat";
             break;
@@ -185,7 +185,7 @@ void mainA(JsonReader file)
     }
 }
 */
-
+/*
 ChatGPT
 Der Code hat einige Fehler und Unklarheiten, aber ich kann Ihnen helfen, diese zu korrigieren:
 
@@ -226,3 +226,4 @@ if (!batchFile.is_open())
     std::cerr << "Fehler beim Erstellen der Batch-Datei!" << std::endl;
     return;
 }
+*/
