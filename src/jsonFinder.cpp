@@ -2,29 +2,31 @@
 #include <fstream>
 #include <iostream>
 #include <jsoncpp/json/json.h>
-#include "jsonClass.h" // Include, falls benötigt
+#include "jsonClass.h"
 #include "createBatch.h"
 
-// Funktion zum Lesen einer JSON-Datei
+// function to read json data
 void JsonReader::readJSON(const char* argv) {
     std::string fileName = argv;
     if (check_types(fileName)) {
-        // Öffnen der Datei aus der Benutzereingabe
+        // open json file from user input
         std::ifstream file(argv);
         Json::Value root;
         file >> root;
-        // Überprüfen, ob die Datei geöffnet wurde
+        // check if json file is opened correctely if not error
         if (file.is_open()) {
+            // save values (outputfile, hideshell, application) from given json file 
             outputfileValue = root["outputfile"];
             hideshellValue = root["hideshell"];
             applicationValue = root["application"];
             entries = root["entries"];
             std::string envArray[100][3];
 
-            // Überprüfe, ob der Wert korrekt ausgelesen wurde
+            // check if json file has value
             if (!outputfileValue.isNull()) {
                 for (const auto& entry : entries) {
-                    if (entry["type"].asString() == "ENV") {
+                    // if block to check which entry type it is
+                    if (entry["type"].asString() == "ENV") { // if ENV type is given, save key and value in class ENV array 
                         env.type = entry["type"].asString();
                         env.key = entry["key"].asString();
                         env.value = entry["value"].asString();
@@ -33,14 +35,14 @@ void JsonReader::readJSON(const char* argv) {
                         env.array[env.index][2] = env.value;
                         env.index++;
                     } 
-                    else if (entry["type"].asString() == "EXE") {
+                    else if (entry["type"].asString() == "EXE") { // if EXE type is given, save command in class EXE array 
                         exe.type = entry["type"].asString();
                         exe.command = entry["command"].asString();
                         exe.array[exe.index][0] = exe.type;
                         exe.array[exe.index][1] = exe.command;
                         exe.index++;
                     } 
-                    else if (entry["type"].asString() == "PATH") {
+                    else if (entry["type"].asString() == "PATH") { // if PATH type is given, save path in class PATH array 
                         path.type = entry["type"].asString();
                         path.path = entry["path"].asString();
                         path.array[path.index][0] = path.type;
