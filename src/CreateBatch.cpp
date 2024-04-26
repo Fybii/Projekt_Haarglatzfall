@@ -7,24 +7,19 @@ void createBatchFile(JsonReader file)
 {
     // Öffnen Sie die Batch-Datei mit dem Namen von outputFileValue
     std::string name = file.outputfileValue.asString();
-    int periodCount = 0;
     int nameLength = name.length();
     std::string fileName;
 
     for (int i = 0; i < nameLength; i++) {
         if (name[i] == '.') {
-            size_t pointPosition = name.find(".");
-            std::string beforePoint = name.substr(0, pointPosition);
-            std::ofstream batchFile(beforePoint + ".bat", std::ios::binary);
+            std::string beforePoint = name.substr(0, i);
             fileName = beforePoint + ".bat";
+            std::ofstream batchFile(fileName, std::ios::binary);
             break;
         }
         else if ( i == nameLength - 1){
-            std::ofstream batchFile(name + ".bat", std::ios::binary);
             fileName = name + ".bat";
-        }
-        else {
-            periodCount++;
+            std::ofstream batchFile(filename, std::ios::binary);
         }
     }
 
