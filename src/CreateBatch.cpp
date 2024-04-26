@@ -1,12 +1,32 @@
 #include "jsonFinder.h"
 #include "jsonClass.h"
-#include <fstream>
+#include <fstream>d
 #include <iostream>
 
 void createBatchFile(JsonReader file)
 {
     // Öffnen Sie die Batch-Datei mit dem Namen von outputFileValue
-    std::ofstream batchFile(file.outputfileValue.asString() + ".bat", std::ios::binary);
+    std::string name = file.outputfileValue.asString();
+    int periodCount = 0;
+    int nameLength = name.length();
+    std::string fileName;
+
+    for (int i = 0; i < nameLength; i++) {
+        if (name[i] == '.') {
+            size_t pointPosition = name.find{"."}
+            beforePoint = name.substr(0, pointPosition);
+            std::ofstream batchFile(beforePoint + ".bat", std::ios::binary);
+            fileName = beforePoint + ".bat";
+            break;
+        }
+        else if ( i == nameLength - 1){
+            std::ofstream batchFile(name + ".bat", std::ios::binary);
+            fileName = name + ".bat";
+        }
+        else {
+            periodCount++;
+        }
+    }
 
     // Überprüfen, ob die Datei erfolgreich geöffnet wurde
     if (!batchFile.is_open())
@@ -82,20 +102,28 @@ void createBatchFile(JsonReader file)
         if (!file.path.array[i][0].empty())
         {
             std::string path = file.path.array[i][1];
-            if (!path.empty() && !file.path.array[i + 1][1].empty())
+            if (i == 0)
             {
-                batchFile << "set PATH=%PATH%;" << path << " && ";
+                batchFile << "set path=;" << path << ";";
             }
             else
             {
-                batchFile << "set PATH=%PATH%;" << path;
+                std::string path = file.path.array[i][1];
+                if (!path.empty() && !file.path.array[i + 1][1].empty())
+                {
+                    batchFile <<  path << ";";
+                }
+                else
+                {
+                    batchFile << path << ";%path%";
+                }
             }
         }
     }
 
     if (!file.applicationValue.isNull())
     {
-        batchFile << " && start \"MinGW\" " << file.applicationValue.asString();
+        batchFile << " && start \"" + filename + "\" " << file.applicationValue.asString();
     }
 
     batchFile << "\"\n@ECHO ON\r\n";
@@ -157,3 +185,44 @@ void mainA(JsonReader file)
     }
 }
 */
+
+ChatGPT
+Der Code hat einige Fehler und Unklarheiten, aber ich kann Ihnen helfen, diese zu korrigieren:
+
+Es gibt einen Syntaxfehler in der Zeile, die pointPosition zuweist. Es sollte name.find('.') sein, nicht name.find{"."}.
+Sie haben beforePoint nicht deklariert, bevor Sie versuchen, ihm einen Wert zuzuweisen. Sie müssen es als std::string deklarieren, bevor Sie es verwenden.
+Die Variable batchFile ist nur innerhalb der Schleife sichtbar, aber Sie verwenden sie außerhalb der Schleife. Sie sollten sicherstellen, dass batchFile im gesamten Gültigkeitsbereich verwendet werden kann.
+Die Variable fileName wird deklariert, aber nicht verwendet. Wenn Sie den Dateinamen verwenden möchten, stellen Sie sicher, dass Sie ihn irgendwo verwenden.
+Es gibt einige logische Probleme bei der Verwendung von beforePoint. Es scheint, dass Sie versuchen, den Dateinamen ohne Erweiterung zu bekommen. Wenn dies der Fall ist, sollten Sie den Code entsprechend anpassen.
+Hier ist der überarbeitete Code:
+
+cpp
+Copy code
+std::string name = file.outputfileValue.asString();
+int periodCount = 0;
+int nameLength = name.length();
+std::string fileName;
+
+for (int i = 0; i < nameLength; i++) {
+    if (name[i] == '.') {
+        size_t pointPosition = name.find('.');
+        std::string beforePoint = name.substr(0, pointPosition);
+        std::ofstream batchFile(beforePoint + ".bat", std::ios::binary);
+        fileName = beforePoint + ".bat";
+        break;
+    }
+    else if (i == nameLength - 1) {
+        std::ofstream batchFile(name + ".bat", std::ios::binary);
+        fileName = name + ".bat";
+    }
+    else {
+        periodCount++;
+    }
+}
+
+// Überprüfen, ob die Datei erfolgreich geöffnet wurde
+if (!batchFile.is_open())
+{
+    std::cerr << "Fehler beim Erstellen der Batch-Datei!" << std::endl;
+    return;
+}
