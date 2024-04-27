@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
         JsonReader file;
         //Loop for checking each command that is given by the user
         //Only activates if the user puts - or -- infront of command
+        // ReqNonFunc 4
         while ((command.option = getopt_long(argc, argv, "h", longopts, NULL)) != -1) {
             switch (command.option)
             {
@@ -50,6 +51,7 @@ int main(int argc, char *argv[])
         };
         //Loop to go through every JSON data the user wants to read
         //checks if the end of the file Name ends with ".json"
+        // ReqFunc 4, 7
         while (1) {
             if(argv[i] != NULL) {
                 if(!file.endsWithJson(argv[i], ".json")) {

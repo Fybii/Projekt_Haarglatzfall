@@ -1,6 +1,7 @@
 #include "command.h"
 #include <iostream>
 
+// Req 1, 2, 3
 // Definition and initialization of the static constant HELPTEXT
 const char * const Help::HELPTEXT = "+--------programm help-------+\n"
                                     "Welcome to the help overlay!\n"

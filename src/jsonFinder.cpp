@@ -6,6 +6,7 @@
 #include "createBatch.h"
 
 // function to read json data
+// ReqFunc 5
 void JsonReader::readJSON(const char* argv) {
     std::string fileName = argv;
     if (check_types(fileName)) {
@@ -16,36 +17,36 @@ void JsonReader::readJSON(const char* argv) {
         // check if json file is opened correctely if not error
         if (file.is_open()) {
             // save values (outputfile, hideshell, application) from given json file 
-            outputfileValue = root["outputfile"];
-            hideshellValue = root["hideshell"];
-            applicationValue = root["application"];
-            entries = root["entries"];
+            outputfileValue = root["outputfile"]; // ReqFunc8
+            hideshellValue = root["hideshell"]; // ReqFunc9
+            applicationValue = root["application"]; // ReqFunc16
+            entries = root["entries"]; // ReqFunc10
             std::string envArray[100][3];
 
             // check if json file has value
             if (!outputfileValue.isNull()) {
                 for (const auto& entry : entries) {
                     // if block to check which entry type it is
-                    if (entry["type"].asString() == "ENV") { // if ENV type is given, save key and value in class ENV array 
+                    if (entry["type"].asString() == "ENV") { // ReqFunc 11; if ENV type is given, save key and value in class ENV array 
                         env.type = entry["type"].asString();
                         env.key = entry["key"].asString();
                         env.value = entry["value"].asString();
-                        env.array[env.index][0] = env.type;
+                        env.array[env.index][0] = env.type; // Req Func 15
                         env.array[env.index][1] = env.key;
                         env.array[env.index][2] = env.value;
                         env.index++;
                     } 
-                    else if (entry["type"].asString() == "EXE") { // if EXE type is given, save command in class EXE array 
+                    else if (entry["type"].asString() == "EXE") { // ReqFunc 12;  if EXE type is given, save command in class EXE array 
                         exe.type = entry["type"].asString();
                         exe.command = entry["command"].asString();
-                        exe.array[exe.index][0] = exe.type;
+                        exe.array[exe.index][0] = exe.type; // Req Func 15
                         exe.array[exe.index][1] = exe.command;
                         exe.index++;
                     } 
-                    else if (entry["type"].asString() == "PATH") { // if PATH type is given, save path in class PATH array 
+                    else if (entry["type"].asString() == "PATH") { // ReqFunc 13; if PATH type is given, save path in class PATH array 
                         path.type = entry["type"].asString();
                         path.path = entry["path"].asString();
-                        path.array[path.index][0] = path.type;
+                        path.array[path.index][0] = path.type; // Req Func 15
                         path.array[path.index][1] = path.path;
                         path.index++;
                     }     
@@ -84,6 +85,7 @@ bool JsonReader::endsWithJson(std::string fileName, std::string targetEnding) {
 }
 
 //Function to check if the given Json data is open
+//ReqFunc 6
 bool JsonReader::check_types(std::string path) {
     std::ifstream file(path);
     if (!file.is_open()) {
@@ -95,6 +97,7 @@ bool JsonReader::check_types(std::string path) {
     std::string line;
     int lineNumber = 0;
 
+    // Req Func 17
     // Read the JSON file line by line and check if the entries are right
     while (getline(file, line)) {
         lineNumber++;

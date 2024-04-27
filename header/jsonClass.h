@@ -1,7 +1,10 @@
+// ReqNonFunc 8
 #ifndef JSON_CLASS_H
 #define JSON_CLASS_H
 
 #include <iostream>
+
+// Req Func 14
 
 class Entry {
 public:

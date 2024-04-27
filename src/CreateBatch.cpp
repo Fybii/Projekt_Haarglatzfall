@@ -27,6 +27,7 @@ void createBatchFile(JsonReader file)
             fileName = name + ".bat";
         }
     }
+    // ReqFunc 18
     //Name the file according to the value of filename
     std::ofstream batchFile(fileName, std::ios::binary);
 
@@ -43,6 +44,7 @@ void createBatchFile(JsonReader file)
 
     //If hideshell is true, then close the console after the appliction in
     //the batchfile has been completed
+    // ReqFunc 19
     if (file.hideshellValue == true)
     {
         batchFile << "C:\\Windows\\System32\\cmd.exe /c \""; 
@@ -53,6 +55,8 @@ void createBatchFile(JsonReader file)
         batchFile << "C:\\Windows\\System32\\cmd.exe /k \"";
     }
     // Loop through the exe array and write the following in the batch file
+    // ReqFunc 20
+    // ReqFunc 22
     int exeSize = sizeof(file.exe.array) / sizeof(file.exe.array[0]);
     for (int i = 0; i < exeSize; i++)
     {
@@ -79,6 +83,7 @@ void createBatchFile(JsonReader file)
         }
     }
     // Loop through the env array and write the following in the batch file
+    // ReqFunc 20
     int envSize = sizeof(file.env.array) / sizeof(file.env.array[0]);
     for (int i = 0; i < envSize; i++)
     {
@@ -107,6 +112,7 @@ void createBatchFile(JsonReader file)
         }
     }
     // Loop through the path array and write the following in the batch file
+    // ReqFunc 23
     int pathSize = sizeof(file.path.array) / sizeof(file.path.array[0]);
     for (int i = 0; i < pathSize; i++)
     {
@@ -137,11 +143,13 @@ void createBatchFile(JsonReader file)
     }
 
     // If an application value is provided, write it to the batch file
+    // ReqFunc 25
     if (!file.applicationValue.isNull())
     {
         batchFile << " && start \"" + fileName + "\" " << file.applicationValue.asString();
     }
 
+    // ReqFunc 24
     batchFile << "\"\n@ECHO ON\r\n";
     // Close the batch file when done
     batchFile.close();
