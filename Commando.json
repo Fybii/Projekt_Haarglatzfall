@@ -1,8 +1,0 @@
-{
-    "outputfile": "testo",
-	"hideshell": true,
-	"entries": [
-		{"type": "EXE", "command": "C:\\Users\\z0247951\\AppData\\Local\\Programs\\obsidian\\Obsidian.exe"}
-		],
-	"application": "C:\\Users\\z0247951\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-    }
