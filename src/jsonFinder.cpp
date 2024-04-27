@@ -57,7 +57,7 @@ void JsonReader::readJSON(const char* argv) {
             else {
                 std::cout << "Fehler beim Lesen von outputfile" << std::endl;
             }
-            // Schließen der Datei nach Abschluss
+            // Closing the file upon completion     
 
             file.close();
         } 
