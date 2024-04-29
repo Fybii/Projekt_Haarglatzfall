@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"a9e0411526c015f4","type":"text","text":"","x":-300,"y":-100,"width":485,"height":270},
+		{"id":"7fc3dbd7a0bcc3c3","type":"text","text":"<p align=\"center\">Titelseite<p>","x":-300,"y":-100,"width":485,"height":50},
+		{"id":"9c2286e2c7e037ec","type":"text","text":"<p align=\"center\">Navigasionsleiste<p>","x":-300,"y":-50,"width":485,"height":50},
+		{"id":"cc56854440317016","type":"text","text":"Anzeige der Website\n\"Viewport\"","x":260,"y":35,"width":300,"height":85},
+		{"id":"c6f9235572ea9b09","type":"text","text":"<p align=\"center\">Browser<p>","x":-300,"y":220,"width":149,"height":185},
+		{"id":"68c486176bea4d93","type":"text","text":"<p align=\"center\">Web Server<p>","x":36,"y":220,"width":149,"height":185},
+		{"id":"f9666ea40e48e800","type":"text","text":"Google Web Server\nwww.google.com","x":260,"y":274,"width":300,"height":77},
+		{"id":"5e43290c16b83555","x":5,"y":740,"width":250,"height":60,"type":"text","text":"<p align=\"center\">IP-Adresse<p>"},
+		{"id":"a5d03a3c80dde36a","x":5,"y":640,"width":250,"height":60,"type":"text","text":"<p align=\"center\">ICP<p>"},
+		{"id":"9cbcde11cb2de946","x":5,"y":540,"width":250,"height":60,"type":"text","text":"<p align=\"center\">DNS-Name<p>"}
+	],
+	"edges":[
+		{"id":"d446dfbece37598d","fromNode":"cc56854440317016","fromSide":"left","toNode":"a9e0411526c015f4","toSide":"right"},
+		{"id":"8db75be31d7c75dc","fromNode":"c6f9235572ea9b09","fromSide":"right","toNode":"68c486176bea4d93","toSide":"left"},
+		{"id":"5952b8385dc7ef52","fromNode":"f9666ea40e48e800","fromSide":"left","toNode":"68c486176bea4d93","toSide":"right"}
+	]
+}

@@ -1,0 +1,2 @@
+- Struktur und Inhalt einer Webseite wird mittels HTML definiert
+- HTML "lehnt sich an XML an"

@@ -1,0 +1,15 @@
+
+- *Es gibt **keine** genaue **Definition** des Begriffs **KI.**
+ - *Vielmehr ist es **sinnvoller KI** als **Ansammlung von Methoden der Mathematik und Algorithmik aus folgenden Bereichen, die auf Computern implementiert werden können:**
+	 - ***Hauptthemen:***
+		 - **Mathematische Logik (Theorembeweiser)**
+		 - **Statistik (Bayes Regel, MaxEnt)**
+		 - **Algorithmische Lerntheorie**
+		 - **Suchalgorithmen**
+		 - **Mathematische Optimierung und Approximationstheorie**
+			 - *Neuronale Netze*
+			 - *Deep Learning*
+	- ***Weiterhin:***
+		- **Robotik**
+		- **Bildverarbeitung (Computer Vision)**
+		- **Sprachverarbeitung (Natural Language Processing)**

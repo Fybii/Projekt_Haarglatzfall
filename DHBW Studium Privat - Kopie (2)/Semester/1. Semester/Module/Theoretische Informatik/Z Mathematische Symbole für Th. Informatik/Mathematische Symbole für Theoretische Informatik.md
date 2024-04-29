@@ -1,0 +1,12 @@
+
+$\equiv$ --> "\\equiv"
+$\wedge$ --> "\\wedge"
+$\vee$ --> "\\vee"
+$\in$ --> "\\in"
+$\leq$ --> "\\leq"
+$\geq$ --> "\\geq"
+$\rightarrow$ --> "\\rightarrow"
+$\leftrightarrow$ --> "\\leftrightarrow"
+$\forall$ --> "\\forall"
+$\exists$ --> "\\exist"
+$\neg$ --> "\neg"

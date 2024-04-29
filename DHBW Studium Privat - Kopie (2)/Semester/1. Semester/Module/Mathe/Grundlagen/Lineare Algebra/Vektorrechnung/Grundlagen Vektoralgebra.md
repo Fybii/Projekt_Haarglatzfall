@@ -1,0 +1,4 @@
+- **Vektor $\doteq$  Pfeil**
+- Er hat einen **Wert und eine Richtung**
+	- z.B. **Strecke, Geschwindigkeit**
+- **"Wert" = Länge eines Vektors $\Leftrightarrow$ Betrag**. $|v|$

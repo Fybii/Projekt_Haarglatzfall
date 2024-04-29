@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"id":"9bd0b4c4c702a0ff","type":"text","text":"node.js\n","x":280,"y":-140,"width":125,"height":90},
+		{"id":"f4743e97521c0fd9","type":"text","text":"","x":280,"y":-50,"width":125,"height":90},
+		{"id":"8bdaf915cfe2eda7","x":-540,"y":-140,"width":125,"height":90,"type":"text","text":"Browser"},
+		{"id":"61e9111b2bff45d0","x":-540,"y":-50,"width":125,"height":90,"type":"text","text":""},
+		{"id":"e472a065d44a7c3d","type":"text","text":"nginx","x":-140,"y":-140,"width":125,"height":90},
+		{"id":"2d3a659655641038","type":"text","text":"","x":-140,"y":-50,"width":125,"height":90}
+	],
+	"edges":[
+		{"id":"8061dd2ca0ad689d","fromNode":"8bdaf915cfe2eda7","fromSide":"right","toNode":"e472a065d44a7c3d","toSide":"left","label":"HTTP POST"},
+		{"id":"a5a360952a0f9ac2","fromNode":"e472a065d44a7c3d","fromSide":"right","toNode":"9bd0b4c4c702a0ff","toSide":"left","label":"HTTP POST"},
+		{"id":"5defdcc735e6fc27","fromNode":"f4743e97521c0fd9","fromSide":"left","toNode":"2d3a659655641038","toSide":"right","label":"HTTP Response"},
+		{"id":"e0945a77c5c99c03","fromNode":"2d3a659655641038","fromSide":"left","toNode":"61e9111b2bff45d0","toSide":"right","label":"HTTP Response"}
+	]
+}

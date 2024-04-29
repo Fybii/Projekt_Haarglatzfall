@@ -1,0 +1,2 @@
+[Datei:Convolution of box signal with itself2.gif (dewiki.de)](https://dewiki.de/Media/Datei:Convolution_of_box_signal_with_itself2.gif)
+[Zur Verdeutlichung der grafischen Faltung – LNTwww](https://www.lntwww.de/Applets:Zur_Verdeutlichung_der_grafischen_Faltung)

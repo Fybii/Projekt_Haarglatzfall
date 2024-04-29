@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"c736043808202892","type":"text","text":"Java Source-Code","x":-220,"y":181,"width":240,"height":50},
+		{"id":"3c301071047d9294","type":"text","text":"Parser","x":290,"y":176,"width":140,"height":60},
+		{"id":"94027b1d7e1f5ab9","type":"text","text":"Translate to Byte Code","x":270,"y":380,"width":175,"height":60},
+		{"id":"50aaf374bd1ca00a","type":"text","text":"Ausführen\n","x":273,"y":560,"width":169,"height":57},
+		{"id":"bf64468d151ea59a","x":20,"y":920,"width":190,"height":140,"type":"text","text":"Webbrowser\n"},
+		{"id":"476f2b5140d3d702","x":210,"y":885,"width":190,"height":155,"type":"text","text":"Webserver"}
+	],
+	"edges":[
+		{"id":"6244825f9467e6f7","fromNode":"c736043808202892","fromSide":"right","toNode":"3c301071047d9294","toSide":"left","label":"run"},
+		{"id":"3257d7fea3f5ef23","fromNode":"3c301071047d9294","fromSide":"bottom","toNode":"94027b1d7e1f5ab9","toSide":"top","label":"Abstract Syntax Tree"},
+		{"id":"55a0ebff428f4d5f","fromNode":"94027b1d7e1f5ab9","fromSide":"bottom","toNode":"50aaf374bd1ca00a","toSide":"top"}
+	]
+}

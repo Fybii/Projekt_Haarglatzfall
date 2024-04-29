@@ -1,0 +1,208 @@
+{
+  "main": {
+    "id": "681de8572768d1b4",
+    "type": "split",
+    "children": [
+      {
+        "id": "162d40c78c34476c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cfd7e94f630a9565",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Semester/2. Semester/Digitale Bildverarbeitung/Fourier Transformation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "907ccb689da05b1c",
+    "type": "split",
+    "children": [
+      {
+        "id": "5d87ad2f7e9c7854",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cd4acdb58af1262f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e936e058d8428f26",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f7b3f92b65029ed6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 298.51625061035156
+  },
+  "right": {
+    "id": "559421c2b46cff6c",
+    "type": "split",
+    "children": [
+      {
+        "id": "1671180356115134",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c39db3c7deac3efe",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Semester/2. Semester/Digitale Bildverarbeitung/Fourier Transformation.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "867c03eb6e6b4461",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Semester/2. Semester/Digitale Bildverarbeitung/Fourier Transformation.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "271e057e397026a7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "071b1cff099a676a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Semester/2. Semester/Digitale Bildverarbeitung/Fourier Transformation.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "cfd7e94f630a9565",
+  "lastOpenFiles": [
+    "Pasted image 20240427211608.png",
+    "Semester/2. Semester/Digitale Bildverarbeitung/Faltung.md",
+    "Semester/2. Semester/Digitale Bildverarbeitung/Fourier Transformation.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/12. For Loops.md",
+    "Semester/2. Semester/Digitale Bildverarbeitung",
+    "Semester/2. Semester/Untitled.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/29. Random.md",
+    "Semester/2. Semester/Digitale Sprachverarbeitung/1.3 Menschliche Sprachproduktion.md",
+    "Semester/2. Semester/Digitale Sprachverarbeitung/1.2 Grundlegendes zur Linguistik.md",
+    "Semester/2. Semester/Digitale Sprachverarbeitung/1.1 Digitale Sprachverarbeitung.md",
+    "Semester/2. Semester/Digitale Sprachverarbeitung/1.4 Menschliches Hören.md",
+    "Semester/1. Semester/Module/Programmieren/Code Bro's C++ Course/Array.md",
+    "Semester/1. Semester/Module/Programmieren/Code Bro's C++ Course/Array Schleifen.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/34. Copy Files.md",
+    "Pasted image 20240423182429.png",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/35. Move Files.md",
+    "Pasted image 20240423182417.png",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/33. Write Files.md",
+    "Pasted image 20240423180801.png",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/32. Open and read a file.md",
+    "Pasted image 20240423180454.png",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/31. File Detection.md",
+    "Pasted image 20240423180018.png",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/30. Exception Handling.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/28. str.format.md",
+    "Pasted image 20240423174738.png",
+    "Pasted image 20240423174346.png",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/23. Keyword arguments.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/2. Variablen.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/4. String Methods.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/5. Type Casts.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/6. User Input.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/8. String Slicing.md",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool/27. kwargs.md",
+    "Pasted image 20240423164032.png",
+    "Pasted image 20240423163503.png",
+    "Pasted image 20240423163352.png",
+    "Semester/2. Semester/Digitale Sprachverarbeitung",
+    "Semester/2. Semester/Programmieren/Java",
+    "Semester/2. Semester/Untitled/Untitled",
+    "Semester/2. Semester/Programmieren - Java",
+    "Semester/2. Semester/Programmieren/Python/Bro Code auf cool",
+    "Semester/2. Semester/Programmieren/Python",
+    "Semester/2. Semester/Programmieren",
+    "Semester/2. Semester/Mathe 2 - Analysis/Differentialrechnung",
+    "Semester/2. Semester/Mathe 2 - Analysis",
+    "Semester/1. Semester/Module/Web Engineering/Serverseitiges Computing/Untitled.canvas",
+    "Semester/1. Semester/Module/Web Engineering/JavaScript/Browser Object Model (BOM)/Untitled.canvas",
+    "Untitled.canvas",
+    "Bilder/Untitled.canvas",
+    "Semester/1. Semester/Module/Web Engineering/2. Webtechnologien/Unbenannt.canvas",
+    "Semester/1. Semester/Module/Web Engineering/Webtechnologien/WWW und das Internet/Grafik.canvas",
+    "Semester/1. Semester/Module/Web Engineering/Webtechnologien/Webobjekte/Grafik.canvas",
+    "Unbenannt.canvas",
+    "Semester/1. Semester/Module/Theoretische Informatik/Grundlagen/I Grundlagen/Aussagen/Unbenannt.canvas",
+    "Semester/1. Semester/Module/Mathe/Lineare Algebra/Unbenannt.canvas"
+  ]
+}
